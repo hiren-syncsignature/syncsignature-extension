@@ -37,6 +37,7 @@ function insertSignature(composeElement: HTMLElement, signature: string): void {
     }
 
     console.log("Inserting signature into compose window");
+    composeElement.innerHTML = "";
     composeElement.insertAdjacentHTML(
         'beforeend',
         `<div class="SyncSignature" style="margin-top: 10px;">${signature}</div>`
