@@ -1,0 +1,31 @@
+{
+    "name": "syncsignature extension",
+    "description": "A Chrome extension for syncsignature",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "index.html"
+    },
+    "icons": {
+      "32": "vite.svg"
+    },
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "clipboardWrite" ,
+      "storage"
+    ],  
+    "host_permissions": [
+      "https://mail.google.com/*"
+  ],
+"content_scripts": [
+  {
+    "matches": ["https://mail.google.com/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "all_frames": true
+  }
+]
+
+}
+  
