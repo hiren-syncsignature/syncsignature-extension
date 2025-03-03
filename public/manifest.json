@@ -1,31 +1,31 @@
 {
-    "name": "syncsignature extension",
-    "description": "A Chrome extension for syncsignature",
-    "version": "1.0.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "index.html"
+  "name": "syncsignature extension",
+  "description": "A Chrome extension for syncsignature",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "./syncsignature_logo.jpg",
+    "32": "./syncsignature_logo.jpg",
+    "48": "./syncsignature_logo.jpg",
+    "128": "./syncsignature_logo.jpg"
+  },
+  "permissions": ["activeTab", "scripting", "clipboardWrite", "storage"],
+  "host_permissions": ["https://mail.google.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
     },
-    "icons": {
-      "32": "vite.svg"
-    },
-    "permissions": [
-      "activeTab",
-      "scripting",
-      "clipboardWrite" ,
-      "storage"
-    ],  
-    "host_permissions": [
-      "https://mail.google.com/*"
-  ],
-"content_scripts": [
-  {
-    "matches": ["https://mail.google.com/*"],
-    "js": ["content.js"],
-    "run_at": "document_idle",
-    "all_frames": true
-  }
-]
-
+    {
+      "matches": ["https://app.syncsignature.com/*"],
+      "js": ["auth-script.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
 }
-  
