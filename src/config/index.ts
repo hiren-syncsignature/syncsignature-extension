@@ -48,8 +48,6 @@ export function download(filename: string, htmlContent: string, styleContent = '
 }
 
 export const getSignatureHTML = (_signatureName: string, signatureContent: string): string => {
-    // You might have more complex HTML generation here, potentially with placeholders.
-    // For simplicity, we're just returning the raw HTML content.
     return signatureContent;
 };
 

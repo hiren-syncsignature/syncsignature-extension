@@ -17,7 +17,7 @@ export default function Layout({
   onLogout,
 }: LayoutProps) {
   return (
-    <div className="flex h-[550px] w-[350px] flex-col overflow-hidden bg-white font-sans text-gray-800 shadow-xl">
+    <div className="flex h-[550px] w-[350px] flex-col overflow-hidden bg-white font-sans text-gray-800 shadow-xl overflow-x-hidden">
       <Header currentScreen={currentScreen} navigateTo={navigateTo} />
 
       <div className="custom-scrollbar flex-1 overflow-y-auto p-4">

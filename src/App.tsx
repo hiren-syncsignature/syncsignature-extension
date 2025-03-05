@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import Layout from "./components/layout/Layout";
 import MainScreen from "./components/screens/MainScreen";
 import WelcomeScreen from "./components/screens/WelcomeScreen";
@@ -15,37 +15,36 @@ function App() {
     token,
     selectedSignatureId,
     userProfile,
-    saveToken,
     saveSelectedSignature,
     saveUserProfile,
     clearToken,
   } = useStorage();
   const { signatures } = useSignatures();
 
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]?.id) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { action: "getLocalStorage", key: "TOKEN" },
-          (response) => {
-            if (response && response.token) {
-              saveToken(response.token);
-            } else {
-              if (chrome.runtime.lastError) {
-                console.error(
-                  "(NOT BRAND WEBSITE) Error sending message:",
-                  chrome.runtime.lastError
-                );
-              } else {
-                console.error("No response or no token received.");
-              }
-            }
-          }
-        );
-      }
-    });
-  }, [saveToken]);
+  // useEffect(() => {
+  //   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  //     if (tabs[0]?.id) {
+  //       chrome.tabs.sendMessage(
+  //         tabs[0].id,
+  //         { action: "getLocalStorage", key: "TOKEN" },
+  //         (response) => {
+  //           if (response && response.token) {
+  //             saveToken(response.token);
+  //           } else {
+  //             if (chrome.runtime.lastError) {
+  //               console.error(
+  //                 "(NOT BRAND WEBSITE) Error sending message:",
+  //                 chrome.runtime.lastError
+  //               );
+  //             } else {
+  //               console.error("No response or no token received.");
+  //             }
+  //           }
+  //         }
+  //       );
+  //     }
+  //   });
+  // }, [saveToken]);
 
   const handleLogin = useCallback(() => {
     navigateTo("welcome");
